@@ -20,21 +20,8 @@ npm run build
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `VITE_FARO_API_URL` | `""` (同源) | Faro API 地址。开发时留空，由 Vite proxy 处理 |
-| `VITE_NAT_ORIGIN` | `""` | SII NAT 代理完整 URL（HMR WebSocket 需要） |
 
-## SII 平台开发
-
-在 SII Notebook 上开发时，Vite 走 NAT 代理，需要两个配置：
-
-**1. 设置 NAT origin（让 HMR 正常工作）**
-
-```bash
-VITE_NAT_ORIGIN=https://nat2-notebook-inspire.sii.edu.cn/.../proxy/5173 npm run dev
-```
-
-`VITE_NAT_ORIGIN` 就是你浏览器地址栏里 5173 前面的那段完整 URL。
-
-**2. API 代理（已内置，无需额外配置）**
+## API 代理
 
 Vite 开发服务器自动将 `/search`、`/health`、`/stats` 代理到 `localhost:8000`，前端请求走同源，无需 CORS。
 
