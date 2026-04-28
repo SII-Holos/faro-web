@@ -6,7 +6,7 @@ import path from "path";
 // SII Notebook: Vite dev server is accessed via NAT proxy, which strips
 // the base path.  We need to set the server origin so that Vite generates
 // correct WebSocket URLs, and proxy /api to the Faro backend to avoid CORS.
-const NAT_ORIGIN = process.env.VITE_NAT_ORIGIN || "";
+const NAT_ORIGIN = (process.env.VITE_NAT_ORIGIN || "").replace(/\/+$/, "");
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
