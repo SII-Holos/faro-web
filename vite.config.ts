@@ -8,8 +8,14 @@ import path from "path";
 // correct WebSocket URLs, and proxy /api to the Faro backend to avoid CORS.
 const NAT_ORIGIN = (process.env.VITE_NAT_ORIGIN || "").replace(/\/+$/, "");
 
+// Extract the path portion from the NAT URL to use as Vite's base.
+// e.g. "https://host/ws-xxx/.../proxy/5173" → "/ws-xxx/.../proxy/5173/"
+// This ensures Vite generates correct asset URLs behind the NAT proxy.
+const NAT_BASE = NAT_ORIGIN ? new URL(NAT_ORIGIN).pathname.replace(/\/+$/, "") + "/" : "/";
+
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: NAT_BASE,
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
