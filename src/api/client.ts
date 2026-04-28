@@ -1,8 +1,9 @@
 /**
  * Faro Search API client.
  *
- * Talks to the Faro backend `POST /search` endpoint.  The API URL is
- * configured via the `VITE_FARO_API_URL` env var (empty = same origin).
+ * In development, Vite proxies /search → localhost:8000 (no CORS needed).
+ * In production, set VITE_FARO_API_URL to the backend's public URL.
+ * Default: empty string = same-origin requests (works with Vite proxy).
  */
 
 export interface SearchFilters {
@@ -46,7 +47,8 @@ export interface SearchResponse {
   timing: SearchTiming | null;
 }
 
-const API_BASE = import.meta.env.VITE_FARO_API_URL || "http://localhost:8000";
+/** Empty = same-origin (Vite dev proxy or same-host deployment). */
+const API_BASE = import.meta.env.VITE_FARO_API_URL || "";
 
 /** Generate or retrieve a stable session ID per browser tab. */
 function getSessionId(): string {
