@@ -3,24 +3,32 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
-// SII NAT proxy strips the path prefix before forwarding to Vite.
-// So Vite sees requests as if they're on / — base stays "/".
-// We only need `origin` so the HMR WebSocket URL points to the public URL.
-const NAT_ORIGIN = (process.env.VITE_NAT_ORIGIN || "").replace(/\/+$/, "");
+// SII NAT proxy setup:
+// - Browser requests https://host/ws-xxx/.../proxy/5173/src/main.tsx
+// - NAT strips the prefix, forwards /src/main.tsx to Vite
+// - So Vite needs `base` to generate URLs with the NAT prefix,
+//   and `origin` (protocol+host only) for HMR WebSocket.
+const NAT_URL = (process.env.VITE_NAT_ORIGIN || "").replace(/\/+$/, "");
+
+let base = "/";
+let origin = "";
+
+if (NAT_URL) {
+  const url = new URL(NAT_URL);
+  base = url.pathname + "/"; // e.g. /ws-xxx/.../proxy/5173/
+  origin = url.origin; // e.g. https://nat2-notebook-inspire.sii.edu.cn
+}
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base,
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
   server: {
-    // Listen on all interfaces — required for SII NAT proxy to reach Vite
     host: "0.0.0.0",
-    // When running behind SII NAT proxy, set VITE_NAT_ORIGIN to the
-    // full proxy URL so Vite's HMR WebSocket connects correctly.
-    origin: NAT_ORIGIN,
+    origin,
     proxy: {
-      // Proxy API requests to Faro backend — avoids CORS entirely
       "/search": "http://localhost:8000",
       "/health": "http://localhost:8000",
       "/stats": "http://localhost:8000",
