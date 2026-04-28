@@ -3,6 +3,12 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
+// Faro backend address for Vite proxy.
+// - Local development against SII: set VITE_FARO_API_PROXY to the NAT URL
+//   e.g. VITE_FARO_API_PROXY=https://nat2-notebook-inspire.sii.edu.cn/.../proxy/8000
+// - Backend on same machine: leave empty (defaults to http://localhost:8000)
+const API_PROXY = process.env.VITE_FARO_API_PROXY || "http://localhost:8000";
+
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -10,10 +16,9 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      // Proxy API requests to Faro backend — avoids CORS in development
-      "/search": "http://localhost:8000",
-      "/health": "http://localhost:8000",
-      "/stats": "http://localhost:8000",
+      "/search": API_PROXY,
+      "/health": API_PROXY,
+      "/stats": API_PROXY,
     },
   },
 });
