@@ -4,24 +4,24 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 // SII NAT proxy setup:
-// - Browser requests https://host/ws-xxx/.../proxy/5173/src/main.tsx
-// - NAT strips the prefix, forwards /src/main.tsx to Vite
-// - So Vite needs `base` to generate URLs with the NAT prefix,
-//   and `origin` (protocol+host only) for HMR WebSocket.
+// The NAT proxy serves Vite at a sub-path like
+//   https://host/ws-xxx/.../proxy/5173/
+// and strips that prefix before forwarding to Vite.
+//
+// Strategy: use base="." (relative paths) so the browser resolves asset
+// URLs relative to the current page URL — no double-prefixing possible.
+// For HMR WebSocket, set origin to protocol+host only.
 const NAT_URL = (process.env.VITE_NAT_ORIGIN || "").replace(/\/+$/, "");
 
-let base = "/";
 let origin = "";
-
 if (NAT_URL) {
   const url = new URL(NAT_URL);
-  base = url.pathname + "/"; // e.g. /ws-xxx/.../proxy/5173/
   origin = url.origin; // e.g. https://nat2-notebook-inspire.sii.edu.cn
 }
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base,
+  base: ".", // relative paths — works behind any proxy prefix
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
