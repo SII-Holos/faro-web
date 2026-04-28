@@ -11,7 +11,7 @@ const THEME_KEY = "faro-theme";
 function getInitialTheme(): boolean {
   const saved = localStorage.getItem(THEME_KEY);
   if (saved !== null) return saved === "dark";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return false; // default to light
 }
 
 export default function App() {

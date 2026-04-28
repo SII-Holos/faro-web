@@ -15,7 +15,7 @@ export function HomePage({ isDark, query, onQueryChange, onSearch }: HomePagePro
   return (
     <div
       className={cn(
-        "size-full overflow-auto transition-colors duration-300",
+        "h-screen overflow-auto transition-colors duration-300",
         isDark
           ? "bg-gradient-to-b from-dark-bg via-dark-bg-mid to-dark-bg-deep"
           : "bg-gradient-to-b from-light-bg-top via-light-bg-mid to-light-bg-deep",
