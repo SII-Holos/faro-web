@@ -14,6 +14,8 @@ export default defineConfig({
     alias: { "@": path.resolve(__dirname, "./src") },
   },
   server: {
+    // Listen on all interfaces — required for SII NAT proxy to reach Vite
+    host: "0.0.0.0",
     // When running behind SII NAT proxy, set VITE_NAT_ORIGIN to the
     // full proxy URL so Vite's HMR WebSocket connects correctly.
     // Example: VITE_NAT_ORIGIN=https://nat2-notebook-inspire.sii.edu.cn/.../proxy/5173
