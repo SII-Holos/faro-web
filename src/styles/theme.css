@@ -1,0 +1,73 @@
+/*
+ * Faro Design Tokens — single source of truth for all colors.
+ *
+ * The color palette is derived from the Figma design: a lighthouse-on-ocean
+ * theme with a warm amber accent.  Dark mode = deep navy night; Light mode =
+ * warm sunrise peach.  The accent color shifts between coral-red (light) and
+ * terracotta-orange (dark) to maintain contrast against their respective
+ * backgrounds.
+ *
+ * Usage: `bg-dark-bg`, `text-light-accent`, etc.  Tailwind v4 picks up these
+ * custom properties via the `@theme` block below.
+ */
+
+/* ---- Dark theme (default) ---- */
+:root {
+  --color-dark-bg: #0f1419;
+  --color-dark-bg-mid: #1a2332;
+  --color-dark-bg-deep: #22314a;
+  --color-dark-card: #1e2d42;
+  --color-dark-border: #2a3a52;
+  --color-dark-hover: #354659;
+  --color-dark-text: #c8d8e8;
+  --color-dark-text-mid: #8ba3c7;
+  --color-dark-text-dim: #5b6f8c;
+  --color-dark-accent: #c87b6a;
+  --color-dark-accent-glow: #d4a574;
+  --color-dark-accent-bright: #e8bb8c;
+  --color-dark-rock: #506175;
+  --color-dark-sea: #6b8cad;
+  --color-dark-sea-light: #7a9fbf;
+
+  --color-light-bg: #fff9f0;
+  --color-light-bg-top: #ffe5b4;
+  --color-light-bg-mid: #ffd4a3;
+  --color-light-bg-deep: #ffc08a;
+  --color-light-border: #ffd4a3;
+  --color-light-text: #2c5f8d;
+  --color-light-text-mid: #5f6f81;
+  --color-light-accent: #ff6b6b;
+  --color-light-accent-warm: #ffd93d;
+  --color-light-sea: #4a90e2;
+  --color-light-sea-light: #5ba3f5;
+}
+
+@theme inline {
+  --color-dark-bg: var(--color-dark-bg);
+  --color-dark-bg-mid: var(--color-dark-bg-mid);
+  --color-dark-bg-deep: var(--color-dark-bg-deep);
+  --color-dark-card: var(--color-dark-card);
+  --color-dark-border: var(--color-dark-border);
+  --color-dark-hover: var(--color-dark-hover);
+  --color-dark-text: var(--color-dark-text);
+  --color-dark-text-mid: var(--color-dark-text-mid);
+  --color-dark-text-dim: var(--color-dark-text-dim);
+  --color-dark-accent: var(--color-dark-accent);
+  --color-dark-accent-glow: var(--color-dark-accent-glow);
+  --color-dark-accent-bright: var(--color-dark-accent-bright);
+  --color-dark-rock: var(--color-dark-rock);
+  --color-dark-sea: var(--color-dark-sea);
+  --color-dark-sea-light: var(--color-dark-sea-light);
+
+  --color-light-bg: var(--color-light-bg);
+  --color-light-bg-top: var(--color-light-bg-top);
+  --color-light-bg-mid: var(--color-light-bg-mid);
+  --color-light-bg-deep: var(--color-light-bg-deep);
+  --color-light-border: var(--color-light-border);
+  --color-light-text: var(--color-light-text);
+  --color-light-text-mid: var(--color-light-text-mid);
+  --color-light-accent: var(--color-light-accent);
+  --color-light-accent-warm: var(--color-light-accent-warm);
+  --color-light-sea: var(--color-light-sea);
+  --color-light-sea-light: var(--color-light-sea-light);
+}
