@@ -46,7 +46,7 @@ export interface SearchResponse {
   timing: SearchTiming | null;
 }
 
-const API_BASE = import.meta.env.VITE_FARO_API_URL || "";
+const API_BASE = import.meta.env.VITE_FARO_API_URL || "http://localhost:8000";
 
 /** Generate or retrieve a stable session ID per browser tab. */
 function getSessionId(): string {
