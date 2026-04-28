@@ -21,7 +21,7 @@ if (NAT_URL) {
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: ".", // relative paths — works behind any proxy prefix
+  base: "./", // relative paths — works behind any proxy prefix
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
