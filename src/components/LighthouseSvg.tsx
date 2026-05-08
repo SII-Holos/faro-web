@@ -7,8 +7,8 @@
  */
 
 interface LighthouseSvgProps {
-  isDark: boolean;
-  className?: string;
+  isDark: boolean
+  className?: string
 }
 
 export function LighthouseSvg({ isDark, className }: LighthouseSvgProps) {
@@ -67,5 +67,5 @@ export function LighthouseSvg({ isDark, className }: LighthouseSvgProps) {
         opacity="0.3"
       />
     </svg>
-  );
+  )
 }

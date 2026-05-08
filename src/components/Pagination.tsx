@@ -1,16 +1,16 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface PaginationProps {
-  current: number;
-  total: number;
-  onPageChange: (page: number) => void;
-  isDark: boolean;
+  current: number
+  total: number
+  onPageChange: (page: number) => void
+  isDark: boolean
 }
 
 export function Pagination({ current, total, onPageChange, isDark }: PaginationProps) {
-  if (total <= 1) return null;
+  if (total <= 1) return null
 
-  const pages = Array.from({ length: total }, (_, i) => i + 1);
+  const pages = Array.from({ length: total }, (_, i) => i + 1)
 
   return (
     <div className="mt-12 flex items-center gap-2">
@@ -33,5 +33,5 @@ export function Pagination({ current, total, onPageChange, isDark }: PaginationP
         </button>
       ))}
     </div>
-  );
+  )
 }

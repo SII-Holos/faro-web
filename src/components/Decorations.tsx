@@ -5,10 +5,10 @@
  * matches the Figma design and adapts its palette to the current theme.
  */
 
-import { Compass } from "lucide-react";
+import { Compass } from "lucide-react"
 
 interface DecorationsProps {
-  isDark: boolean;
+  isDark: boolean
 }
 
 export function Decorations({ isDark }: DecorationsProps) {
@@ -32,10 +32,7 @@ export function Decorations({ isDark }: DecorationsProps) {
       {/* Top wave decoration */}
       <div className="absolute inset-x-0 top-0 h-64 overflow-hidden opacity-20">
         <svg className="w-full h-full" viewBox="0 0 1200 300" preserveAspectRatio="none">
-          <path
-            d="M0,100 C300,150 600,50 900,100 L900,0 L0,0 Z"
-            fill={isDark ? "#2a3a52" : "#FFDAB9"}
-          />
+          <path d="M0,100 C300,150 600,50 900,100 L900,0 L0,0 Z" fill={isDark ? "#2a3a52" : "#FFDAB9"} />
           <path
             d="M0,150 C400,100 800,200 1200,150 L1200,0 L0,0 Z"
             fill={isDark ? "#354659" : "#FFE4C4"}
@@ -47,12 +44,7 @@ export function Decorations({ isDark }: DecorationsProps) {
       {/* Bottom waves */}
       <div className={`w-full max-w-4xl mt-4 ${isDark ? "opacity-30" : "opacity-50"}`}>
         <svg width="100%" height="80" viewBox="0 0 800 80" preserveAspectRatio="none">
-          <path
-            d="M0,35 Q200,15 400,35 T800,35"
-            stroke={isDark ? "#6B8CAD" : "#4A90E2"}
-            strokeWidth="3"
-            fill="none"
-          />
+          <path d="M0,35 Q200,15 400,35 T800,35" stroke={isDark ? "#6B8CAD" : "#4A90E2"} strokeWidth="3" fill="none" />
           <path
             d="M0,50 Q200,30 400,50 T800,50"
             stroke={isDark ? "#7A9FBF" : "#5BA3F5"}
@@ -75,12 +67,7 @@ export function Decorations({ isDark }: DecorationsProps) {
         <svg width="110" height="80" viewBox="0 0 80 60" fill="none">
           <path d="M10 40 L70 40 L60 50 L20 50 Z" fill={isDark ? "#705A45" : "#8B4513"} />
           <path d="M40 10 L40 40 L65 25 Z" fill={isDark ? "#C87B6A" : "#FF6B6B"} />
-          <path
-            d="M5 50 Q40 45 75 50"
-            stroke={isDark ? "#6B8CAD" : "#4A90E2"}
-            strokeWidth="2"
-            fill="none"
-          />
+          <path d="M5 50 Q40 45 75 50" stroke={isDark ? "#6B8CAD" : "#4A90E2"} strokeWidth="2" fill="none" />
         </svg>
       </div>
 
@@ -89,19 +76,12 @@ export function Decorations({ isDark }: DecorationsProps) {
         <svg width="95" height="72" viewBox="0 0 80 60" fill="none">
           <path d="M10 40 L70 40 L60 50 L20 50 Z" fill={isDark ? "#5B6F8C" : "#6C8299"} />
           <path d="M40 10 L40 40 L65 25 Z" fill={isDark ? "#7A9FBF" : "#4A90E2"} />
-          <path
-            d="M5 50 Q40 45 75 50"
-            stroke={isDark ? "#7A9FBF" : "#5BA3F5"}
-            strokeWidth="2"
-            fill="none"
-          />
+          <path d="M5 50 Q40 45 75 50" stroke={isDark ? "#7A9FBF" : "#5BA3F5"} strokeWidth="2" fill="none" />
         </svg>
       </div>
 
       {/* Seagull — right */}
-      <div
-        className={`absolute top-28 right-24 hidden md:block animate-pulse ${isDark ? "opacity-30" : "opacity-50"}`}
-      >
+      <div className={`absolute top-28 right-24 hidden md:block animate-pulse ${isDark ? "opacity-30" : "opacity-50"}`}>
         <svg width="50" height="40" viewBox="0 0 40 30" fill="none">
           <path
             d="M5 15 Q12 8 20 15 Q28 8 35 15"
@@ -147,5 +127,5 @@ export function Decorations({ isDark }: DecorationsProps) {
         </svg>
       </div>
     </>
-  );
+  )
 }

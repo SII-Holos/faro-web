@@ -1,15 +1,15 @@
-import { Search } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Search } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface SearchInputProps {
-  value: string;
-  onChange: (value: string) => void;
-  onSubmit: () => void;
-  isDark: boolean;
+  value: string
+  onChange: (value: string) => void
+  onSubmit: () => void
+  isDark: boolean
   /** Compact variant used in the results page header. */
-  compact?: boolean;
-  placeholder?: string;
-  autoFocus?: boolean;
+  compact?: boolean
+  placeholder?: string
+  autoFocus?: boolean
 }
 
 export function SearchInput({
@@ -22,9 +22,9 @@ export function SearchInput({
   autoFocus = false,
 }: SearchInputProps) {
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
+    e.preventDefault()
+    onSubmit()
+  }
 
   if (compact) {
     return (
@@ -32,14 +32,10 @@ export function SearchInput({
         <div
           className={cn(
             "flex items-center border-2 rounded-full px-5 py-2.5 transition-colors duration-150",
-            isDark
-              ? "border-dark-accent bg-dark-card"
-              : "border-light-accent bg-white",
+            isDark ? "border-dark-accent bg-dark-card" : "border-light-accent bg-white",
           )}
         >
-          <Search
-            className={`w-5 h-5 mr-3 ${isDark ? "text-dark-text-mid" : "text-light-text-mid"}`}
-          />
+          <Search className={`w-5 h-5 mr-3 ${isDark ? "text-dark-text-mid" : "text-light-text-mid"}`} />
           <input
             type="text"
             value={value}
@@ -55,7 +51,7 @@ export function SearchInput({
           />
         </div>
       </form>
-    );
+    )
   }
 
   return (
@@ -72,14 +68,10 @@ export function SearchInput({
         <div
           className={cn(
             "relative rounded-full shadow-lg flex items-center px-6 py-4 border-4 transition-colors duration-150",
-            isDark
-              ? "bg-dark-card border-dark-accent"
-              : "bg-white border-light-accent",
+            isDark ? "bg-dark-card border-dark-accent" : "bg-white border-light-accent",
           )}
         >
-          <Search
-            className={`w-6 h-6 mr-4 ${isDark ? "text-dark-text-mid" : "text-light-text-mid"}`}
-          />
+          <Search className={`w-6 h-6 mr-4 ${isDark ? "text-dark-text-mid" : "text-light-text-mid"}`} />
           <input
             type="text"
             value={value}
@@ -107,5 +99,5 @@ export function SearchInput({
         </div>
       </div>
     </form>
-  );
+  )
 }

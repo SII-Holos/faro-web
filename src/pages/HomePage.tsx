@@ -1,14 +1,14 @@
-import { motion } from "framer-motion";
-import { LighthouseSvg } from "@/components/LighthouseSvg";
-import { Decorations } from "@/components/Decorations";
-import { SearchInput } from "@/components/SearchInput";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion"
+import { LighthouseSvg } from "@/components/LighthouseSvg"
+import { Decorations } from "@/components/Decorations"
+import { SearchInput } from "@/components/SearchInput"
+import { cn } from "@/lib/utils"
 
 interface HomePageProps {
-  isDark: boolean;
-  query: string;
-  onQueryChange: (q: string) => void;
-  onSearch: () => void;
+  isDark: boolean
+  query: string
+  onQueryChange: (q: string) => void
+  onSearch: () => void
 }
 
 export function HomePage({ isDark, query, onQueryChange, onSearch }: HomePageProps) {
@@ -51,9 +51,7 @@ export function HomePage({ isDark, query, onQueryChange, onSearch }: HomePagePro
             Faro
           </h1>
           <p
-            className={`text-lg md:text-xl transition-colors ${
-              isDark ? "text-dark-text-mid" : "text-light-text-mid"
-            }`}
+            className={`text-lg md:text-xl transition-colors ${isDark ? "text-dark-text-mid" : "text-light-text-mid"}`}
           >
             为你照亮知识的海洋
           </p>
@@ -66,15 +64,9 @@ export function HomePage({ isDark, query, onQueryChange, onSearch }: HomePagePro
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
         >
-          <SearchInput
-            value={query}
-            onChange={onQueryChange}
-            onSubmit={onSearch}
-            isDark={isDark}
-            autoFocus
-          />
+          <SearchInput value={query} onChange={onQueryChange} onSubmit={onSearch} isDark={isDark} autoFocus />
         </motion.div>
       </div>
     </div>
-  );
+  )
 }

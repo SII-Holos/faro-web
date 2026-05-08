@@ -5,7 +5,7 @@
  */
 
 interface EmptyStateProps {
-  isDark: boolean;
+  isDark: boolean
 }
 
 export function EmptyState({ isDark }: EmptyStateProps) {
@@ -20,12 +20,8 @@ export function EmptyState({ isDark }: EmptyStateProps) {
         <path d="M70 145 L110 145 L115 165 L65 165 Z" fill={isDark ? "#506175" : "#5F6F81"} />
       </svg>
 
-      <p className={`text-lg mb-1 ${isDark ? "text-dark-text-mid" : "text-light-text-mid"}`}>
-        没有找到相关结果
-      </p>
-      <p className={`text-sm ${isDark ? "text-dark-text-dim" : "text-light-text-mid"}`}>
-        试试换个关键词？
-      </p>
+      <p className={`text-lg mb-1 ${isDark ? "text-dark-text-mid" : "text-light-text-mid"}`}>没有找到相关结果</p>
+      <p className={`text-sm ${isDark ? "text-dark-text-dim" : "text-light-text-mid"}`}>试试换个关键词？</p>
     </div>
-  );
+  )
 }

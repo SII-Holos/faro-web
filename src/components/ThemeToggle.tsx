@@ -1,8 +1,8 @@
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react"
 
 interface ThemeToggleProps {
-  isDark: boolean;
-  onToggle: () => void;
+  isDark: boolean
+  onToggle: () => void
 }
 
 export function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
@@ -18,5 +18,5 @@ export function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
     >
       {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
     </button>
-  );
+  )
 }

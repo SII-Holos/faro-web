@@ -7,58 +7,58 @@
  */
 
 export interface SearchFilters {
-  domain?: string[];
-  language?: string[];
-  min_authority_score?: number;
-  min_quality_score?: number;
-  published_after?: number;
-  published_before?: number;
-  min_word_count?: number;
+  domain?: string[]
+  language?: string[]
+  min_authority_score?: number
+  min_quality_score?: number
+  published_after?: number
+  published_before?: number
+  min_word_count?: number
 }
 
 export interface SearchResult {
-  url: string;
-  title: string;
-  content: string;
-  domain: string;
-  language: string;
-  score: number;
-  chunk_index: number;
-  quality_score: number;
-  published_at: number;
-  word_count: number;
-  authority_score: number;
-  author: string;
-  redirected_from: string | null;
+  url: string
+  title: string
+  content: string
+  domain: string
+  language: string
+  score: number
+  chunk_index: number
+  quality_score: number
+  published_at: number
+  word_count: number
+  authority_score: number
+  author: string
+  redirected_from: string | null
 }
 
 export interface SearchTiming {
-  embedding_ms: number;
-  vector_search_ms: number;
-  rerank_ms: number;
-  total_ms: number;
+  embedding_ms: number
+  vector_search_ms: number
+  rerank_ms: number
+  total_ms: number
 }
 
 export interface SearchResponse {
-  results: SearchResult[];
-  search_type: string;
-  latency_ms: number;
-  total: number;
-  timing: SearchTiming | null;
+  results: SearchResult[]
+  search_type: string
+  latency_ms: number
+  total: number
+  timing: SearchTiming | null
 }
 
 /** Empty = same-origin (Vite dev proxy or same-host deployment). */
-const API_BASE = import.meta.env.VITE_FARO_API_URL || "";
+const API_BASE = import.meta.env.VITE_FARO_API_URL || ""
 
 /** Generate or retrieve a stable session ID per browser tab. */
 function getSessionId(): string {
-  const KEY = "faro-session-id";
-  let id = sessionStorage.getItem(KEY);
+  const KEY = "faro-session-id"
+  let id = sessionStorage.getItem(KEY)
   if (!id) {
-    id = crypto.randomUUID();
-    sessionStorage.setItem(KEY, id);
+    id = crypto.randomUUID()
+    sessionStorage.setItem(KEY, id)
   }
-  return id;
+  return id
 }
 
 export async function search(
@@ -75,11 +75,11 @@ export async function search(
       agent_id: "web-ui",
       session_id: getSessionId(),
     }),
-  });
+  })
 
   if (!res.ok) {
-    throw new Error(`Search failed: ${res.status}`);
+    throw new Error(`Search failed: ${res.status}`)
   }
 
-  return res.json() as Promise<SearchResponse>;
+  return res.json() as Promise<SearchResponse>
 }
